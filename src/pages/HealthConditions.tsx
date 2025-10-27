@@ -19,6 +19,12 @@ const HealthConditions = () => {
         "Monitor portion sizes and meal timing",
         "Include lean proteins with every meal",
       ],
+      exercises: [
+        "30 minutes brisk walking daily after meals",
+        "Strength training 2-3 times per week",
+        "Yoga or stretching for 15 minutes daily",
+        "Swimming or cycling 3 times per week",
+      ],
     },
     {
       id: "blood-pressure",
@@ -31,6 +37,12 @@ const HealthConditions = () => {
         "Increase potassium-rich foods (bananas, spinach)",
         "Choose whole grains over refined grains",
         "Include fatty fish 2-3 times per week",
+      ],
+      exercises: [
+        "Moderate cardio like walking or jogging 30 mins daily",
+        "Deep breathing exercises for stress management",
+        "Light aerobics or dancing 4 times per week",
+        "Avoid heavy weightlifting, focus on light weights",
       ],
     },
     {
@@ -45,6 +57,12 @@ const HealthConditions = () => {
         "Eat 5+ servings of fruits and vegetables daily",
         "Choose lean proteins and plant-based options",
       ],
+      exercises: [
+        "Aerobic exercises like walking, cycling 150 mins/week",
+        "Swimming for cardiovascular endurance",
+        "Tai Chi or gentle yoga for flexibility",
+        "Regular monitoring during exercise",
+      ],
     },
     {
       id: "weight-loss",
@@ -57,6 +75,12 @@ const HealthConditions = () => {
         "Focus on protein (20-30% of calories)",
         "Eat nutrient-dense, whole foods",
         "Include regular physical activity",
+      ],
+      exercises: [
+        "HIIT workouts 3 times per week (20-30 mins)",
+        "Daily walking 10,000 steps or 60 minutes",
+        "Strength training to build muscle mass",
+        "Mix cardio and resistance for best results",
       ],
     },
   ];
@@ -91,13 +115,25 @@ const HealthConditions = () => {
                       <h2 className="text-2xl font-bold mb-2">{condition.name}</h2>
                       <p className="text-muted-foreground mb-6">{condition.description}</p>
                       
-                      <div className="bg-muted/50 rounded-lg p-6 mb-6">
+                      <div className="bg-muted/50 rounded-lg p-6 mb-4">
                         <h3 className="font-semibold mb-4 text-lg">Key Dietary Guidelines:</h3>
                         <ul className="space-y-3">
                           {condition.guidelines.map((guideline, idx) => (
                             <li key={idx} className="flex items-start gap-3">
                               <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                               <span className="text-sm">{guideline}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="bg-primary-light/30 rounded-lg p-6 mb-6">
+                        <h3 className="font-semibold mb-4 text-lg">Recommended Exercises:</h3>
+                        <ul className="space-y-3">
+                          {condition.exercises.map((exercise, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                              <span className="text-sm">{exercise}</span>
                             </li>
                           ))}
                         </ul>

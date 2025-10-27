@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 import { Search, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
+import brownRiceImg from "@/assets/food-brown-rice.jpg";
+import spinachImg from "@/assets/food-spinach.jpg";
+import chickenImg from "@/assets/food-chicken.jpg";
+import salmonImg from "@/assets/food-salmon.jpg";
+import appleImg from "@/assets/food-apple.jpg";
+import bananaImg from "@/assets/food-banana.jpg";
 
 const FoodLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,6 +32,7 @@ const FoodLibrary = () => {
       id: 1,
       name: "Brown Rice",
       category: "Grains",
+      image: brownRiceImg,
       calories: 112,
       protein: 2.6,
       carbs: 23.5,
@@ -38,6 +45,7 @@ const FoodLibrary = () => {
       id: 2,
       name: "Spinach",
       category: "Vegetables",
+      image: spinachImg,
       calories: 23,
       protein: 2.9,
       carbs: 3.6,
@@ -50,6 +58,7 @@ const FoodLibrary = () => {
       id: 3,
       name: "Grilled Chicken Breast",
       category: "Proteins",
+      image: chickenImg,
       calories: 165,
       protein: 31,
       carbs: 0,
@@ -60,20 +69,22 @@ const FoodLibrary = () => {
     },
     {
       id: 4,
-      name: "Almonds",
-      category: "Nuts & Seeds",
-      calories: 164,
-      protein: 6,
-      carbs: 6,
-      fat: 14,
-      fiber: 3.5,
-      sodium: 0,
-      benefits: ["Healthy fats", "High fiber", "Zero sodium"],
+      name: "Salmon",
+      category: "Proteins",
+      image: salmonImg,
+      calories: 206,
+      protein: 22,
+      carbs: 0,
+      fat: 13,
+      fiber: 0,
+      sodium: 59,
+      benefits: ["Omega-3 rich", "Heart healthy", "High protein"],
     },
     {
       id: 5,
       name: "Apple",
       category: "Fruits",
+      image: appleImg,
       calories: 95,
       protein: 0.5,
       carbs: 25,
@@ -84,15 +95,16 @@ const FoodLibrary = () => {
     },
     {
       id: 6,
-      name: "Greek Yogurt",
-      category: "Dairy",
-      calories: 100,
-      protein: 10,
-      carbs: 6,
-      fat: 4,
-      fiber: 0,
-      sodium: 50,
-      benefits: ["High protein", "Probiotic", "Low sugar"],
+      name: "Banana",
+      category: "Fruits",
+      image: bananaImg,
+      calories: 105,
+      protein: 1.3,
+      carbs: 27,
+      fat: 0.4,
+      fiber: 3.1,
+      sodium: 1,
+      benefits: ["High potassium", "Energy boost", "Natural sugars"],
     },
   ];
 
@@ -141,40 +153,49 @@ const FoodLibrary = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredFoods.map((food) => (
               <Link key={food.id} to={`/food/${food.id}`}>
-                <Card className="p-6 h-full hover:shadow-card transition-shadow cursor-pointer">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold mb-1">{food.name}</h3>
-                      <Badge variant="secondary" className="text-xs">{food.category}</Badge>
-                    </div>
-                    <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                <Card className="overflow-hidden h-full hover:shadow-card transition-shadow cursor-pointer">
+                  <div className="aspect-square overflow-hidden bg-muted">
+                    <img 
+                      src={food.image} 
+                      alt={food.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-lg font-bold mb-1">{food.name}</h3>
+                        <Badge variant="secondary" className="text-xs">{food.category}</Badge>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                    </div>
 
-                  <div className="space-y-3 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Calories</span>
-                      <span className="font-semibold">{food.calories}</span>
+                    <div className="space-y-3 mb-4">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Calories</span>
+                        <span className="font-semibold">{food.calories}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Protein</span>
+                        <span className="font-semibold">{food.protein}g</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Carbs</span>
+                        <span className="font-semibold">{food.carbs}g</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Fat</span>
+                        <span className="font-semibold">{food.fat}g</span>
+                      </div>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Protein</span>
-                      <span className="font-semibold">{food.protein}g</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Carbs</span>
-                      <span className="font-semibold">{food.carbs}g</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Fat</span>
-                      <span className="font-semibold">{food.fat}g</span>
-                    </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-1">
-                    {food.benefits.slice(0, 2).map((benefit, idx) => (
-                      <Badge key={idx} variant="outline" className="text-xs">
-                        {benefit}
-                      </Badge>
-                    ))}
+                    <div className="flex flex-wrap gap-1">
+                      {food.benefits.slice(0, 2).map((benefit, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs">
+                          {benefit}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </Card>
               </Link>

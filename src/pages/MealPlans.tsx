@@ -23,6 +23,13 @@ const MealPlans = () => {
       condition: "Diabetes",
       foods: ["Oats upma with vegetables", "Boiled egg", "Green tea"],
       macros: { carbs: 45, protein: 15, fat: 12 },
+      instructions: [
+        "Cook oats with mixed vegetables (carrots, peas, beans)",
+        "Add minimal salt and spices for flavor",
+        "Prepare a boiled egg on the side",
+        "Serve hot with sugar-free green tea"
+      ],
+      benefits: "Slow-release carbs help maintain steady blood sugar levels throughout the morning",
     },
     {
       id: 2,
@@ -32,6 +39,13 @@ const MealPlans = () => {
       condition: "Heart Health",
       foods: ["Brown rice", "Dal", "Mixed vegetable curry", "Cucumber salad"],
       macros: { carbs: 55, protein: 18, fat: 10 },
+      instructions: [
+        "Cook brown rice with minimal oil",
+        "Prepare dal with turmeric and minimal salt",
+        "Make mixed vegetable curry with seasonal veggies",
+        "Toss cucumber salad with lemon juice"
+      ],
+      benefits: "Rich in fiber and omega-3s, supports cardiovascular health and reduces cholesterol",
     },
     {
       id: 3,
@@ -41,6 +55,13 @@ const MealPlans = () => {
       condition: "Blood Pressure",
       foods: ["Grilled fish", "Quinoa", "Steamed broccoli", "Tomato soup"],
       macros: { carbs: 40, protein: 30, fat: 12 },
+      instructions: [
+        "Grill fish with herbs (no salt)",
+        "Cook quinoa in low-sodium vegetable stock",
+        "Steam broccoli until tender-crisp",
+        "Prepare fresh tomato soup without added salt"
+      ],
+      benefits: "Low in sodium and high in potassium, helps regulate blood pressure naturally",
     },
     {
       id: 4,
@@ -50,6 +71,13 @@ const MealPlans = () => {
       condition: "Weight Loss",
       foods: ["Handful of almonds", "Apple slices", "Greek yogurt"],
       macros: { carbs: 15, protein: 8, fat: 9 },
+      instructions: [
+        "Measure 10-12 almonds (about 23g)",
+        "Slice one medium apple",
+        "Serve with 100g plain Greek yogurt",
+        "Sprinkle cinnamon on apple for extra flavor"
+      ],
+      benefits: "High protein and fiber keep you full longer, preventing overeating between meals",
     },
   ];
 
@@ -120,6 +148,22 @@ const MealPlans = () => {
                             <li key={idx}>• {food}</li>
                           ))}
                         </ul>
+                      </div>
+
+                      <div className="mb-4 bg-muted/50 rounded-lg p-4">
+                        <h4 className="font-semibold mb-2 text-sm">How to Prepare:</h4>
+                        <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
+                          {plan.instructions.map((instruction, idx) => (
+                            <li key={idx}>{instruction}</li>
+                          ))}
+                        </ol>
+                      </div>
+
+                      <div className="mb-4 p-3 bg-primary-light/20 rounded-lg">
+                        <p className="text-sm text-foreground">
+                          <span className="font-semibold">Health Benefits: </span>
+                          {plan.benefits}
+                        </p>
                       </div>
 
                       <div className="flex flex-wrap gap-6 text-sm">
