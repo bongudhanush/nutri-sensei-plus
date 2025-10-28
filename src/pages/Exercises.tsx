@@ -16,17 +16,17 @@ const Exercises = () => {
           title: "Walking Exercise for Diabetes",
           duration: "30 min",
           intensity: "Low",
-          videoId: "E3mzhvMgrLE",
+          videoId: "aUaInS6HIGo",
           description: "Gentle walking routine to help manage blood sugar levels",
           benefits: ["Improves insulin sensitivity", "Controls blood glucose", "Promotes cardiovascular health"]
         },
         {
           id: 2,
-          title: "Resistance Band Training",
+          title: "Chair Exercises for Diabetics",
           duration: "20 min",
-          intensity: "Medium",
-          videoId: "VmDHls1DGyY",
-          description: "Strength exercises using resistance bands for diabetic patients",
+          intensity: "Low",
+          videoId: "xfNxJH_RlyA",
+          description: "Seated exercises perfect for diabetes management",
           benefits: ["Builds muscle mass", "Increases metabolism", "Better glucose control"]
         }
       ]
@@ -37,10 +37,10 @@ const Exercises = () => {
       exercises: [
         {
           id: 3,
-          title: "Cardio Exercises for Heart Health",
+          title: "Cardio for Heart Health",
           duration: "25 min",
           intensity: "Medium",
-          videoId: "yKPv_gWfU-g",
+          videoId: "ML6WXLjalVc",
           description: "Safe cardiovascular exercises for heart patients",
           benefits: ["Strengthens heart muscle", "Improves circulation", "Reduces blood pressure"]
         },
@@ -49,7 +49,7 @@ const Exercises = () => {
           title: "Gentle Yoga for Heart Health",
           duration: "30 min",
           intensity: "Low",
-          videoId: "v7AYKMP6rOE",
+          videoId: "COp7BR_Dvps",
           description: "Relaxing yoga poses to support heart health",
           benefits: ["Reduces stress", "Lowers heart rate", "Improves flexibility"]
         }
@@ -64,7 +64,7 @@ const Exercises = () => {
           title: "Fat Burning Workout",
           duration: "35 min",
           intensity: "High",
-          videoId: "M0uO8X3_tEA",
+          videoId: "hlWiI4xVXKY",
           description: "High-intensity workout for maximum calorie burn",
           benefits: ["Burns calories", "Boosts metabolism", "Builds lean muscle"]
         },
@@ -73,7 +73,7 @@ const Exercises = () => {
           title: "Full Body Workout at Home",
           duration: "40 min",
           intensity: "High",
-          videoId: "gC_L9qAHVJ8",
+          videoId: "QlHEJkr3jU4",
           description: "Complete home workout for weight loss",
           benefits: ["Total body conditioning", "No equipment needed", "Effective fat loss"]
         }
@@ -97,7 +97,7 @@ const Exercises = () => {
           title: "Beginner Pilates",
           duration: "25 min",
           intensity: "Medium",
-          videoId: "K56Z12XLF_M",
+          videoId: "4pKly2JojMw",
           description: "Core-strengthening pilates for beginners",
           benefits: ["Strengthens core", "Improves balance", "Better body awareness"]
         }

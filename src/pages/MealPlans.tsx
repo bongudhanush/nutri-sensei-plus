@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { Sunrise, Sun, Sunset, Moon, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
+import { useState } from "react";
 
 const MealPlans = () => {
+  const [selectedMealType, setSelectedMealType] = useState<string | null>(null);
+
   const mealTypes = [
     { id: "breakfast", name: "Breakfast", icon: Sunrise, color: "text-orange-500" },
     { id: "lunch", name: "Lunch", icon: Sun, color: "text-yellow-500" },
@@ -101,8 +104,15 @@ const MealPlans = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {mealTypes.map((type) => {
               const Icon = type.icon;
+              const isSelected = selectedMealType === type.id;
               return (
-                <Card key={type.id} className="p-6 text-center hover:shadow-card transition-shadow cursor-pointer">
+                <Card 
+                  key={type.id} 
+                  className={`p-6 text-center hover:shadow-card transition-all cursor-pointer ${
+                    isSelected ? 'ring-2 ring-primary bg-primary/5' : ''
+                  }`}
+                  onClick={() => setSelectedMealType(isSelected ? null : type.id)}
+                >
                   <Icon className={`w-10 h-10 ${type.color} mx-auto mb-2`} />
                   <h3 className="font-semibold">{type.name}</h3>
                 </Card>
@@ -112,7 +122,9 @@ const MealPlans = () => {
 
           {/* Sample Meal Plans */}
           <div className="space-y-6">
-            {samplePlans.map((plan) => {
+            {samplePlans
+              .filter(plan => !selectedMealType || plan.type === selectedMealType)
+              .map((plan) => {
               const Icon = mealTypes.find(t => t.id === plan.type)?.icon || Sunrise;
               const color = mealTypes.find(t => t.id === plan.type)?.color || "text-gray-500";
               

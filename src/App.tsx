@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import HealthConditions from "./pages/HealthConditions";
 import MealPlans from "./pages/MealPlans";
+import MealPlanDetail from "./pages/MealPlanDetail";
 import FoodLibrary from "./pages/FoodLibrary";
 import FoodDetail from "./pages/FoodDetail";
 import Doctors from "./pages/Doctors";
@@ -30,7 +31,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/conditions" element={<ProtectedRoute><HealthConditions /></ProtectedRoute>} />
             <Route path="/meal-plans" element={<ProtectedRoute><MealPlans /></ProtectedRoute>} />
-            <Route path="/meal-plans/:id" element={<ProtectedRoute><MealPlans /></ProtectedRoute>} />
+            <Route path="/meal-plans/:id" element={<ProtectedRoute><MealPlanDetail /></ProtectedRoute>} />
             <Route path="/food-library" element={<ProtectedRoute><FoodLibrary /></ProtectedRoute>} />
             <Route path="/food/:id" element={<ProtectedRoute><FoodDetail /></ProtectedRoute>} />
             <Route path="/doctors" element={<ProtectedRoute><Doctors /></ProtectedRoute>} />
