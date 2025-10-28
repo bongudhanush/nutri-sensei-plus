@@ -13,6 +13,7 @@ import FoodLibrary from "./pages/FoodLibrary";
 import FoodDetail from "./pages/FoodDetail";
 import Doctors from "./pages/Doctors";
 import BuildPlan from "./pages/BuildPlan";
+import Exercises from "./pages/Exercises";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/food/:id" element={<ProtectedRoute><FoodDetail /></ProtectedRoute>} />
             <Route path="/doctors" element={<ProtectedRoute><Doctors /></ProtectedRoute>} />
             <Route path="/build-plan" element={<ProtectedRoute><BuildPlan /></ProtectedRoute>} />
+            <Route path="/exercises" element={<ProtectedRoute><Exercises /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

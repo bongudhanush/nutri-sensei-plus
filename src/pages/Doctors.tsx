@@ -3,13 +3,37 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Star, MessageCircle, Video, Calendar } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Doctors = () => {
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [showMessageForm, setShowMessageForm] = useState<number | null>(null);
+  const [bookingDialog, setBookingDialog] = useState<{ open: boolean; doctor: any | null }>({
+    open: false,
+    doctor: null,
+  });
+  const [appointmentData, setAppointmentData] = useState({
+    date: "",
+    time: "",
+    consultationType: "video",
+    notes: "",
+  });
+  const [loading, setLoading] = useState(false);
 
   const doctors = [
     {
@@ -46,6 +70,56 @@ const Doctors = () => {
       availability: "Mon-Fri, 2 PM - 8 PM",
     },
   ];
+
+  const handleBookAppointment = async () => {
+    if (!user || !bookingDialog.doctor) return;
+
+    if (!appointmentData.date || !appointmentData.time) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { error } = await supabase.from("appointments").insert({
+        user_id: user.id,
+        doctor_name: bookingDialog.doctor.name,
+        doctor_specialty: bookingDialog.doctor.specialty,
+        appointment_date: appointmentData.date,
+        appointment_time: appointmentData.time,
+        consultation_type: appointmentData.consultationType,
+        notes: appointmentData.notes,
+        status: "pending",
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Success!",
+        description: "Your appointment has been booked successfully.",
+      });
+
+      setBookingDialog({ open: false, doctor: null });
+      setAppointmentData({
+        date: "",
+        time: "",
+        consultationType: "video",
+        notes: "",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to book appointment",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -120,7 +194,10 @@ const Doctors = () => {
                         <Video className="mr-2 w-4 h-4" />
                         Video Call
                       </Button>
-                      <Button variant="outline">
+                      <Button 
+                        variant="outline"
+                        onClick={() => setBookingDialog({ open: true, doctor })}
+                      >
                         <Calendar className="mr-2 w-4 h-4" />
                         Book Appointment
                       </Button>
@@ -189,6 +266,81 @@ const Doctors = () => {
           </Card>
         </div>
       </div>
+
+      {/* Appointment Booking Dialog */}
+      <Dialog open={bookingDialog.open} onOpenChange={(open) => setBookingDialog({ open, doctor: null })}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Book Appointment</DialogTitle>
+            <DialogDescription>
+              Schedule a consultation with {bookingDialog.doctor?.name}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 py-4">
+            <div>
+              <Label htmlFor="date">Appointment Date</Label>
+              <Input
+                id="date"
+                type="date"
+                value={appointmentData.date}
+                onChange={(e) => setAppointmentData({ ...appointmentData, date: e.target.value })}
+                min={new Date().toISOString().split("T")[0]}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="time">Preferred Time</Label>
+              <Input
+                id="time"
+                type="time"
+                value={appointmentData.time}
+                onChange={(e) => setAppointmentData({ ...appointmentData, time: e.target.value })}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="consultationType">Consultation Type</Label>
+              <select
+                id="consultationType"
+                className="w-full px-3 py-2 border border-input bg-background rounded-md"
+                value={appointmentData.consultationType}
+                onChange={(e) =>
+                  setAppointmentData({ ...appointmentData, consultationType: e.target.value })
+                }
+              >
+                <option value="video">Video Call</option>
+                <option value="phone">Phone Call</option>
+                <option value="in-person">In-Person</option>
+              </select>
+            </div>
+
+            <div>
+              <Label htmlFor="notes">Additional Notes (Optional)</Label>
+              <Textarea
+                id="notes"
+                placeholder="Describe your health concerns or questions..."
+                value={appointmentData.notes}
+                onChange={(e) => setAppointmentData({ ...appointmentData, notes: e.target.value })}
+                rows={3}
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-3">
+            <Button
+              variant="outline"
+              onClick={() => setBookingDialog({ open: false, doctor: null })}
+              className="flex-1"
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleBookAppointment} disabled={loading} className="flex-1">
+              {loading ? "Booking..." : "Confirm Booking"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

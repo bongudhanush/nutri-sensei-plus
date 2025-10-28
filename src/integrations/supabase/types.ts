@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      appointments: {
+        Row: {
+          appointment_date: string
+          appointment_time: string
+          consultation_type: string
+          created_at: string
+          doctor_name: string
+          doctor_specialty: string
+          id: string
+          notes: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          appointment_date: string
+          appointment_time: string
+          consultation_type: string
+          created_at?: string
+          doctor_name: string
+          doctor_specialty: string
+          id?: string
+          notes?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          appointment_date?: string
+          appointment_time?: string
+          consultation_type?: string
+          created_at?: string
+          doctor_name?: string
+          doctor_specialty?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           activity_level: string | null
@@ -53,6 +95,51 @@ export type Database = {
           updated_at?: string
           user_id?: string
           weight?: number | null
+        }
+        Relationships: []
+      }
+      user_plans: {
+        Row: {
+          activity_level: string
+          age: number
+          created_at: string
+          daily_calories: number
+          gender: string
+          goal: string
+          health_conditions: string[]
+          height: number
+          id: string
+          updated_at: string
+          user_id: string
+          weight: number
+        }
+        Insert: {
+          activity_level: string
+          age: number
+          created_at?: string
+          daily_calories: number
+          gender: string
+          goal: string
+          health_conditions?: string[]
+          height: number
+          id?: string
+          updated_at?: string
+          user_id: string
+          weight: number
+        }
+        Update: {
+          activity_level?: string
+          age?: number
+          created_at?: string
+          daily_calories?: number
+          gender?: string
+          goal?: string
+          health_conditions?: string[]
+          height?: number
+          id?: string
+          updated_at?: string
+          user_id?: string
+          weight?: number
         }
         Relationships: []
       }

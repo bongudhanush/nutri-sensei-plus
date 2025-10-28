@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,10 +7,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
-import { Calculator, ChevronRight } from "lucide-react";
+import { Calculator, ChevronRight, CheckCircle, TrendingUp, Target } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const BuildPlan = () => {
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [savedPlan, setSavedPlan] = useState<any>(null);
   const [formData, setFormData] = useState({
     age: "",
     gender: "male",
@@ -20,6 +27,37 @@ const BuildPlan = () => {
     goal: "maintain",
     conditions: [] as string[],
   });
+
+  useEffect(() => {
+    if (user) {
+      fetchUserPlan();
+    }
+  }, [user]);
+
+  const fetchUserPlan = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("user_plans")
+        .select("*")
+        .eq("user_id", user?.id)
+        .single();
+
+      if (data) {
+        setSavedPlan(data);
+        setFormData({
+          age: data.age.toString(),
+          gender: data.gender,
+          height: data.height.toString(),
+          weight: data.weight.toString(),
+          activity: data.activity_level,
+          goal: data.goal,
+          conditions: data.health_conditions || [],
+        });
+      }
+    } catch (error) {
+      console.log("No existing plan found");
+    }
+  };
 
   const conditions = [
     "Diabetes",
@@ -64,6 +102,48 @@ const BuildPlan = () => {
 
   const handleBack = () => {
     if (step > 1) setStep(step - 1);
+  };
+
+  const handleSubmit = async () => {
+    if (!user) return;
+
+    setLoading(true);
+    try {
+      const calories = calculateCalories();
+      const planData = {
+        user_id: user.id,
+        age: parseInt(formData.age),
+        gender: formData.gender,
+        height: parseFloat(formData.height),
+        weight: parseFloat(formData.weight),
+        activity_level: formData.activity,
+        goal: formData.goal,
+        health_conditions: formData.conditions,
+        daily_calories: calories,
+      };
+
+      const { data, error } = await supabase
+        .from("user_plans")
+        .upsert(planData, { onConflict: "user_id" })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setSavedPlan(data);
+      toast({
+        title: "Success!",
+        description: "Your personalized plan has been created.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to save plan",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -290,8 +370,12 @@ const BuildPlan = () => {
                   Back
                 </Button>
               )}
-              <Button onClick={handleNext} className="flex-1">
-                {step < 3 ? (
+              <Button 
+                onClick={step < 3 ? handleNext : handleSubmit}
+                className="flex-1"
+                disabled={loading}
+              >
+                {loading ? "Saving..." : step < 3 ? (
                   <>
                     Next <ChevronRight className="ml-2 w-4 h-4" />
                   </>
@@ -301,6 +385,83 @@ const BuildPlan = () => {
               </Button>
             </div>
           </Card>
+
+          {/* Display Saved Plan */}
+          {savedPlan && (
+            <Card className="mt-8 p-8 bg-gradient-card animate-fade-in">
+              <div className="flex items-center gap-3 mb-6">
+                <CheckCircle className="w-8 h-8 text-green-500" />
+                <h2 className="text-3xl font-bold">Your Personalized Plan</h2>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <Card className="p-6 bg-background/50">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Target className="w-6 h-6 text-primary" />
+                    <h3 className="font-bold text-lg">Daily Calories</h3>
+                  </div>
+                  <p className="text-4xl font-bold text-primary mb-2">
+                    {savedPlan.daily_calories}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Based on your {savedPlan.goal} goal
+                  </p>
+                </Card>
+
+                <Card className="p-6 bg-background/50">
+                  <div className="flex items-center gap-3 mb-3">
+                    <TrendingUp className="w-6 h-6 text-primary" />
+                    <h3 className="font-bold text-lg">Activity Level</h3>
+                  </div>
+                  <p className="text-2xl font-bold mb-2 capitalize">
+                    {savedPlan.activity_level.replace("_", " ")}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {savedPlan.gender === "male" ? "Male" : "Female"}, {savedPlan.age} years
+                  </p>
+                </Card>
+
+                <Card className="p-6 bg-background/50">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Calculator className="w-6 h-6 text-primary" />
+                    <h3 className="font-bold text-lg">Body Metrics</h3>
+                  </div>
+                  <p className="text-sm mb-1">
+                    <span className="font-semibold">Height:</span> {savedPlan.height} cm
+                  </p>
+                  <p className="text-sm">
+                    <span className="font-semibold">Weight:</span> {savedPlan.weight} kg
+                  </p>
+                </Card>
+              </div>
+
+              {savedPlan.health_conditions && savedPlan.health_conditions.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="font-bold text-lg mb-3">Health Considerations</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {savedPlan.health_conditions.map((condition: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium"
+                      >
+                        {condition}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-primary-light/20 rounded-lg p-6">
+                <h3 className="font-bold text-lg mb-3">What's Next?</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>• Explore our meal plans tailored to your needs</li>
+                  <li>• Browse the food library for healthy options</li>
+                  <li>• Check recommended exercises for your health conditions</li>
+                  <li>• Consult with our expert nutritionists</li>
+                </ul>
+              </div>
+            </Card>
+          )}
         </div>
       </div>
     </div>

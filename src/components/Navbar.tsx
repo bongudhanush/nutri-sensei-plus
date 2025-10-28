@@ -47,6 +47,9 @@ const Navbar = () => {
             <Link to="/doctors" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Consult Doctors
             </Link>
+            <Link to="/exercises" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Exercises
+            </Link>
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -113,6 +116,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Consult Doctors
+            </Link>
+            <Link
+              to="/exercises"
+              className="block px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Exercises
             </Link>
             <div className="px-4">
               <Button asChild className="w-full">
