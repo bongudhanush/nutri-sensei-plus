@@ -3,22 +3,115 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, X, Send } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "assistant", content: "Hi! I'm your NutriSensei assistant. How can I help you today?" }
+  const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([
+    { role: "assistant", content: "Hi! I'm NutriSensei, your nutrition assistant. How can I help you today?" },
   ]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
     
-    setMessages([...messages, 
-      { role: "user", content: input },
-      { role: "assistant", content: "Thank you for your question! I'm here to help you with meal planning, nutrition advice, and health recommendations." }
-    ]);
+    const userMessage = input.trim();
+    const newMessages = [...messages, { role: "user", content: userMessage }];
+    setMessages(newMessages);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ messages: newMessages }),
+      });
+
+      if (response.status === 429) {
+        toast({
+          title: "Rate Limit",
+          description: "Too many requests. Please try again later.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      if (response.status === 402) {
+        toast({
+          title: "Service Unavailable",
+          description: "AI service requires additional credits.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      if (!response.ok || !response.body) throw new Error("Failed to start stream");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let textBuffer = "";
+      let streamDone = false;
+      let assistantText = "";
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        textBuffer += decoder.decode(value, { stream: true });
+
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
+
+          if (line.endsWith("\r")) line = line.slice(0, -1);
+          if (line.startsWith(":") || line.trim() === "") continue;
+          if (!line.startsWith("data: ")) continue;
+
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === "[DONE]") {
+            streamDone = true;
+            break;
+          }
+
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
+            if (content) {
+              assistantText += content;
+              setMessages((prev) => {
+                const last = prev[prev.length - 1];
+                if (last?.role === "assistant") {
+                  return prev.map((m, i) => (i === prev.length - 1 ? { ...m, content: assistantText } : m));
+                }
+                return [...prev, { role: "assistant", content: assistantText }];
+              });
+            }
+          } catch {
+            textBuffer = line + "\n" + textBuffer;
+            break;
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Chat error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to get response. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -62,10 +155,17 @@ const ChatBot = () => {
                       : "bg-muted text-foreground"
                   }`}
                 >
-                  <p className="text-sm">{msg.content}</p>
+                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 </div>
               </div>
             ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-muted text-foreground rounded-lg p-3">
+                  <p className="text-sm">Typing...</p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input */}
@@ -75,10 +175,11 @@ const ChatBot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Type your message..."
+                placeholder="Ask about nutrition, meal plans, or health..."
                 className="flex-1"
+                disabled={isLoading}
               />
-              <Button onClick={handleSend} size="icon">
+              <Button size="icon" onClick={handleSend} disabled={isLoading}>
                 <Send className="w-4 h-4" />
               </Button>
             </div>
