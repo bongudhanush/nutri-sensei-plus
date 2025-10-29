@@ -46,6 +46,8 @@ const Doctors = () => {
       expertise: ["Diabetes", "Weight Management", "Sports Nutrition"],
       languages: ["English", "Hindi", "Telugu"],
       availability: "Mon-Fri, 9 AM - 6 PM",
+      education: "PhD in Clinical Nutrition, AIIMS Delhi",
+      about: "Specialized in diabetes management and sports nutrition with over 12 years of experience helping patients achieve their health goals through evidence-based dietary interventions.",
     },
     {
       id: 2,
@@ -57,6 +59,8 @@ const Doctors = () => {
       expertise: ["Heart Health", "Blood Pressure", "Cholesterol"],
       languages: ["English", "Hindi"],
       availability: "Tue-Sat, 10 AM - 7 PM",
+      education: "MD Cardiology, PGIMER Chandigarh",
+      about: "Expert in cardiovascular health and preventive cardiology. Helps patients manage heart conditions through lifestyle modifications and personalized nutrition plans.",
     },
     {
       id: 3,
@@ -68,6 +72,47 @@ const Doctors = () => {
       expertise: ["Diabetes", "Thyroid", "Hormone Balance"],
       languages: ["English", "Telugu"],
       availability: "Mon-Fri, 2 PM - 8 PM",
+      education: "MD Endocrinology, CMC Vellore",
+      about: "Focuses on hormonal disorders and metabolic conditions. Provides comprehensive treatment plans combining medication and nutrition therapy.",
+    },
+    {
+      id: 4,
+      name: "Dr. Amit Patel",
+      specialty: "Sports Nutritionist",
+      experience: "8 years",
+      rating: 4.6,
+      reviews: 156,
+      expertise: ["Athletic Performance", "Body Building", "Weight Loss"],
+      languages: ["English", "Hindi", "Gujarati"],
+      availability: "Mon-Sat, 7 AM - 9 PM",
+      education: "MSc Sports Nutrition, NIS Patiala",
+      about: "Works with athletes and fitness enthusiasts to optimize performance through tailored nutrition strategies and supplementation guidance.",
+    },
+    {
+      id: 5,
+      name: "Dr. Meera Iyer",
+      specialty: "Pediatric Nutritionist",
+      experience: "14 years",
+      rating: 4.9,
+      reviews: 287,
+      expertise: ["Child Nutrition", "Growth Issues", "Food Allergies"],
+      languages: ["English", "Tamil", "Hindi"],
+      availability: "Mon-Fri, 10 AM - 5 PM",
+      education: "MD Pediatrics, JIPMER Pondicherry",
+      about: "Specializes in child and adolescent nutrition. Helps parents manage picky eaters, food allergies, and ensure optimal growth and development.",
+    },
+    {
+      id: 6,
+      name: "Dr. Sanjay Gupta",
+      specialty: "Integrative Medicine Specialist",
+      experience: "18 years",
+      rating: 4.8,
+      reviews: 342,
+      expertise: ["Holistic Health", "Ayurveda", "Chronic Diseases"],
+      languages: ["English", "Hindi"],
+      availability: "Tue-Sat, 11 AM - 7 PM",
+      education: "BAMS, MD Integrative Medicine",
+      about: "Combines modern nutrition science with traditional Ayurvedic principles to create comprehensive wellness plans for chronic conditions.",
     },
   ];
 
@@ -164,6 +209,13 @@ const Doctors = () => {
                     </div>
 
                     <div className="space-y-3 mb-6">
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-3">{doctor.about}</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-muted-foreground">Education:</span>
+                        <span className="ml-2 text-sm">{doctor.education}</span>
+                      </div>
                       <div>
                         <span className="text-sm font-medium text-muted-foreground">Expertise:</span>
                         <div className="flex flex-wrap gap-2 mt-1">

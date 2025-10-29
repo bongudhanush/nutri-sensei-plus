@@ -451,14 +451,74 @@ const BuildPlan = () => {
                 </div>
               )}
 
-              <div className="bg-primary-light/20 rounded-lg p-6">
-                <h3 className="font-bold text-lg mb-3">What's Next?</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Explore our meal plans tailored to your needs</li>
-                  <li>• Browse the food library for healthy options</li>
-                  <li>• Check recommended exercises for your health conditions</li>
-                  <li>• Consult with our expert nutritionists</li>
-                </ul>
+              <div className="space-y-6">
+                <div className="bg-primary-light/20 rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-3">What's Next?</h3>
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Explore our meal plans tailored to your needs and health goals</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Browse the food library for healthy options with detailed nutrition information</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Check recommended exercises for your health conditions with video tutorials</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Consult with our expert nutritionists for personalized guidance</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Card className="p-6 bg-background/50 hover:shadow-card transition-shadow">
+                    <h4 className="font-bold mb-2">Daily Macros Target</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Protein (30%):</span>
+                        <span className="font-semibold">{Math.round(savedPlan.daily_calories * 0.3 / 4)}g</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Carbs (45%):</span>
+                        <span className="font-semibold">{Math.round(savedPlan.daily_calories * 0.45 / 4)}g</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Fats (25%):</span>
+                        <span className="font-semibold">{Math.round(savedPlan.daily_calories * 0.25 / 9)}g</span>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-6 bg-background/50 hover:shadow-card transition-shadow">
+                    <h4 className="font-bold mb-2">BMI & Health Score</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Current BMI:</span>
+                        <span className="font-semibold">
+                          {(savedPlan.weight / Math.pow(savedPlan.height / 100, 2)).toFixed(1)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Target Weight:</span>
+                        <span className="font-semibold">
+                          {savedPlan.goal === "lose" ? `${savedPlan.weight - 5}kg` : 
+                           savedPlan.goal === "gain" ? `${savedPlan.weight + 5}kg` : 
+                           `${savedPlan.weight}kg (maintain)`}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Est. Timeline:</span>
+                        <span className="font-semibold">
+                          {savedPlan.goal === "maintain" ? "Ongoing" : "8-12 weeks"}
+                        </span>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
               </div>
             </Card>
           )}

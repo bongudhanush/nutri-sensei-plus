@@ -51,7 +51,7 @@ const Index = () => {
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Personalized diet plans for diabetes, blood pressure, heart health, and weight management
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button asChild size="lg" className="text-lg px-8">
                 <Link to="/build-plan">
                   Get My Plan <ChevronRight className="ml-2 w-5 h-5" />
@@ -60,6 +60,22 @@ const Index = () => {
               <Button asChild size="lg" variant="outline" className="text-lg px-8">
                 <Link to="/food-library">Explore Foods</Link>
               </Button>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+              <Card className="p-6 bg-gradient-card">
+                <p className="text-4xl font-bold text-primary mb-2">50,000+</p>
+                <p className="text-muted-foreground">Users Transformed</p>
+              </Card>
+              <Card className="p-6 bg-gradient-card">
+                <p className="text-4xl font-bold text-primary mb-2">2,500+</p>
+                <p className="text-muted-foreground">Meal Plans Created</p>
+              </Card>
+              <Card className="p-6 bg-gradient-card">
+                <p className="text-4xl font-bold text-primary mb-2">98%</p>
+                <p className="text-muted-foreground">Satisfaction Rate</p>
+              </Card>
             </div>
           </div>
         </div>
@@ -106,6 +122,45 @@ const Index = () => {
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Why Choose NutriSensei?
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Medically Reviewed</h3>
+              <p className="text-sm text-muted-foreground">All plans reviewed by certified nutritionists</p>
+            </Card>
+            <Card className="p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <Activity className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Science-Based</h3>
+              <p className="text-sm text-muted-foreground">Evidence-based nutrition recommendations</p>
+            </Card>
+            <Card className="p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <Apple className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Easy to Follow</h3>
+              <p className="text-sm text-muted-foreground">Simple meal plans with everyday ingredients</p>
+            </Card>
+            <Card className="p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">24/7 Support</h3>
+              <p className="text-sm text-muted-foreground">AI chatbot and expert consultations available</p>
+            </Card>
           </div>
         </div>
       </section>
