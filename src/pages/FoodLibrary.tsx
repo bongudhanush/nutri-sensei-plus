@@ -39,7 +39,6 @@ const FoodLibrary = () => {
       carbs: 23.5,
       fat: 0.9,
       fiber: 1.8,
-      sodium: 5,
       benefits: ["Low sodium", "High fiber", "Whole grain"],
       description: "A nutritious whole grain packed with fiber and essential minerals.",
     },
@@ -53,13 +52,12 @@ const FoodLibrary = () => {
       carbs: 3.6,
       fat: 0.4,
       fiber: 2.2,
-      sodium: 79,
       benefits: ["Low calorie", "High iron", "Vitamin rich"],
       description: "Leafy green vegetable rich in iron, vitamins A, C, and K.",
     },
     {
       id: 3,
-      name: "Grilled Chicken Breast",
+      name: "Grilled Chicken",
       category: "Proteins",
       image: chickenImg,
       calories: 165,
@@ -67,7 +65,6 @@ const FoodLibrary = () => {
       carbs: 0,
       fat: 3.6,
       fiber: 0,
-      sodium: 74,
       benefits: ["High protein", "Low fat", "No carbs"],
       description: "Lean protein source ideal for muscle building and weight management.",
     },
@@ -81,7 +78,6 @@ const FoodLibrary = () => {
       carbs: 0,
       fat: 13,
       fiber: 0,
-      sodium: 59,
       benefits: ["Omega-3 rich", "Heart healthy", "High protein"],
       description: "Fatty fish rich in omega-3 fatty acids, excellent for heart health.",
     },
@@ -95,7 +91,6 @@ const FoodLibrary = () => {
       carbs: 25,
       fat: 0.3,
       fiber: 4.4,
-      sodium: 2,
       benefits: ["High fiber", "Low sodium", "Natural sugars"],
       description: "Crunchy fruit high in fiber and antioxidants, great for snacking.",
     },
@@ -109,68 +104,11 @@ const FoodLibrary = () => {
       carbs: 27,
       fat: 0.4,
       fiber: 3.1,
-      sodium: 1,
       benefits: ["High potassium", "Energy boost", "Natural sugars"],
       description: "Energy-dense fruit packed with potassium, perfect pre-workout snack.",
     },
     {
       id: 7,
-      name: "Broccoli",
-      category: "Vegetables",
-      image: spinachImg,
-      calories: 55,
-      protein: 3.7,
-      carbs: 11.2,
-      fat: 0.6,
-      fiber: 2.4,
-      sodium: 33,
-      benefits: ["High fiber", "Vitamin C", "Cancer-fighting"],
-      description: "Cruciferous vegetable rich in vitamins and cancer-fighting compounds.",
-    },
-    {
-      id: 8,
-      name: "Sweet Potato",
-      category: "Vegetables",
-      image: brownRiceImg,
-      calories: 86,
-      protein: 1.6,
-      carbs: 20.1,
-      fat: 0.1,
-      fiber: 3,
-      sodium: 55,
-      benefits: ["High fiber", "Vitamin A", "Complex carbs"],
-      description: "Nutrient-dense root vegetable high in beta-carotene and fiber.",
-    },
-    {
-      id: 9,
-      name: "Greek Yogurt",
-      category: "Dairy",
-      image: chickenImg,
-      calories: 59,
-      protein: 10,
-      carbs: 3.6,
-      fat: 0.4,
-      fiber: 0,
-      sodium: 36,
-      benefits: ["High protein", "Probiotics", "Low fat"],
-      description: "Creamy dairy product packed with protein and gut-healthy probiotics.",
-    },
-    {
-      id: 10,
-      name: "Almonds",
-      category: "Nuts & Seeds",
-      image: bananaImg,
-      calories: 164,
-      protein: 6,
-      carbs: 6,
-      fat: 14,
-      fiber: 3.5,
-      sodium: 0,
-      benefits: ["Healthy fats", "Vitamin E", "Heart healthy"],
-      description: "Nutrient-dense nuts rich in healthy fats, vitamin E, and magnesium.",
-    },
-    {
-      id: 11,
       name: "Quinoa",
       category: "Grains",
       image: brownRiceImg,
@@ -179,54 +117,11 @@ const FoodLibrary = () => {
       carbs: 21.3,
       fat: 1.9,
       fiber: 2.8,
-      sodium: 7,
       benefits: ["Complete protein", "Gluten-free", "High fiber"],
       description: "Ancient grain with all nine essential amino acids, perfect protein source.",
     },
     {
-      id: 12,
-      name: "Avocado",
-      category: "Fruits",
-      image: appleImg,
-      calories: 160,
-      protein: 2,
-      carbs: 8.5,
-      fat: 14.7,
-      fiber: 6.7,
-      sodium: 7,
-      benefits: ["Healthy fats", "High fiber", "Potassium rich"],
-      description: "Creamy fruit rich in heart-healthy monounsaturated fats.",
-    },
-    {
-      id: 13,
-      name: "Eggs",
-      category: "Proteins",
-      image: chickenImg,
-      calories: 155,
-      protein: 13,
-      carbs: 1.1,
-      fat: 11,
-      fiber: 0,
-      sodium: 124,
-      benefits: ["Complete protein", "Vitamin D", "Choline rich"],
-      description: "Versatile protein source with all essential amino acids and nutrients.",
-    },
-    {
-      id: 14,
-      name: "Blueberries",
-      category: "Fruits",
-      image: bananaImg,
-      calories: 57,
-      protein: 0.7,
-      carbs: 14.5,
-      fat: 0.3,
-      fiber: 2.4,
-      sodium: 1,
-      benefits: ["Antioxidants", "Low calorie", "Brain health"],
-      description: "Superfood berries packed with antioxidants and brain-boosting nutrients.",
-    },
-    {
-      id: 15,
+      id: 8,
       name: "Oats",
       category: "Grains",
       image: brownRiceImg,
@@ -235,7 +130,6 @@ const FoodLibrary = () => {
       carbs: 66.3,
       fat: 6.9,
       fiber: 10.6,
-      sodium: 2,
       benefits: ["High fiber", "Heart healthy", "Sustained energy"],
       description: "Whole grain cereal rich in beta-glucan fiber for heart health.",
     },
@@ -310,22 +204,22 @@ const FoodLibrary = () => {
                       <ChevronRight className="w-5 h-5 text-muted-foreground" />
                     </div>
 
-                    <div className="space-y-3 mb-4">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Calories</span>
-                        <span className="font-semibold">{food.calories}</span>
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div className="text-center p-2 bg-muted/50 rounded">
+                        <p className="text-xs text-muted-foreground">Calories</p>
+                        <p className="font-bold text-primary">{food.calories}</p>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Protein</span>
-                        <span className="font-semibold">{food.protein}g</span>
+                      <div className="text-center p-2 bg-muted/50 rounded">
+                        <p className="text-xs text-muted-foreground">Protein</p>
+                        <p className="font-bold text-primary">{food.protein}g</p>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Carbs</span>
-                        <span className="font-semibold">{food.carbs}g</span>
+                      <div className="text-center p-2 bg-muted/50 rounded">
+                        <p className="text-xs text-muted-foreground">Carbs</p>
+                        <p className="font-bold text-primary">{food.carbs}g</p>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Fat</span>
-                        <span className="font-semibold">{food.fat}g</span>
+                      <div className="text-center p-2 bg-muted/50 rounded">
+                        <p className="text-xs text-muted-foreground">Fat</p>
+                        <p className="font-bold text-primary">{food.fat}g</p>
                       </div>
                     </div>
 
