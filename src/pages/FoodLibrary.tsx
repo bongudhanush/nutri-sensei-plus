@@ -13,6 +13,12 @@ import chickenImg from "@/assets/food-chicken.jpg";
 import salmonImg from "@/assets/food-salmon.jpg";
 import appleImg from "@/assets/food-apple.jpg";
 import bananaImg from "@/assets/food-banana.jpg";
+import yogurtImg from "@/assets/food-yogurt.jpg";
+import nutsImg from "@/assets/food-nuts.jpg";
+import broccoliImg from "@/assets/food-broccoli.jpg";
+import blueberriesImg from "@/assets/food-blueberries.jpg";
+import quinoaImg from "@/assets/food-quinoa.jpg";
+import oatsImg from "@/assets/food-oats.jpg";
 
 const FoodLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +52,7 @@ const FoodLibrary = () => {
       id: 2,
       name: "Quinoa",
       category: "Grains",
-      image: brownRiceImg,
+      image: quinoaImg,
       calories: 120,
       protein: 4.4,
       carbs: 21.3,
@@ -59,7 +65,7 @@ const FoodLibrary = () => {
       id: 3,
       name: "Oats",
       category: "Grains",
-      image: brownRiceImg,
+      image: oatsImg,
       calories: 389,
       protein: 16.9,
       carbs: 66.3,
@@ -85,7 +91,7 @@ const FoodLibrary = () => {
       id: 5,
       name: "Broccoli",
       category: "Vegetables",
-      image: spinachImg,
+      image: broccoliImg,
       calories: 55,
       protein: 3.7,
       carbs: 11.2,
@@ -176,7 +182,7 @@ const FoodLibrary = () => {
       id: 12,
       name: "Blueberries",
       category: "Fruits",
-      image: bananaImg,
+      image: blueberriesImg,
       calories: 57,
       protein: 0.7,
       carbs: 14.5,
@@ -202,7 +208,7 @@ const FoodLibrary = () => {
       id: 14,
       name: "Greek Yogurt",
       category: "Dairy",
-      image: chickenImg,
+      image: yogurtImg,
       calories: 59,
       protein: 10,
       carbs: 3.6,
@@ -215,7 +221,7 @@ const FoodLibrary = () => {
       id: 15,
       name: "Cottage Cheese",
       category: "Dairy",
-      image: chickenImg,
+      image: yogurtImg,
       calories: 98,
       protein: 11,
       carbs: 3.4,
@@ -228,7 +234,7 @@ const FoodLibrary = () => {
       id: 16,
       name: "Skim Milk",
       category: "Dairy",
-      image: chickenImg,
+      image: yogurtImg,
       calories: 83,
       protein: 8.3,
       carbs: 12.2,
@@ -241,7 +247,7 @@ const FoodLibrary = () => {
       id: 17,
       name: "Cheddar Cheese",
       category: "Dairy",
-      image: chickenImg,
+      image: yogurtImg,
       calories: 403,
       protein: 25,
       carbs: 1.3,
@@ -254,7 +260,7 @@ const FoodLibrary = () => {
       id: 18,
       name: "Almonds",
       category: "Nuts & Seeds",
-      image: bananaImg,
+      image: nutsImg,
       calories: 164,
       protein: 6,
       carbs: 6,
@@ -267,7 +273,7 @@ const FoodLibrary = () => {
       id: 19,
       name: "Walnuts",
       category: "Nuts & Seeds",
-      image: bananaImg,
+      image: nutsImg,
       calories: 185,
       protein: 4.3,
       carbs: 3.9,
@@ -280,7 +286,7 @@ const FoodLibrary = () => {
       id: 20,
       name: "Chia Seeds",
       category: "Nuts & Seeds",
-      image: brownRiceImg,
+      image: quinoaImg,
       calories: 138,
       protein: 4.7,
       carbs: 12,
@@ -293,7 +299,7 @@ const FoodLibrary = () => {
       id: 21,
       name: "Pumpkin Seeds",
       category: "Nuts & Seeds",
-      image: brownRiceImg,
+      image: quinoaImg,
       calories: 151,
       protein: 7,
       carbs: 5,
@@ -306,7 +312,7 @@ const FoodLibrary = () => {
       id: 22,
       name: "Cashews",
       category: "Nuts & Seeds",
-      image: bananaImg,
+      image: nutsImg,
       calories: 157,
       protein: 5.2,
       carbs: 8.6,

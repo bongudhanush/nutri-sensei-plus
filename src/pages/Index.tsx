@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Heart, Apple, Activity, Users, BookOpen, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
+import heroNutrition from "@/assets/hero-nutrition.jpg";
 
 const Index = () => {
   const conditions = [
@@ -43,27 +44,38 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-hero bg-clip-text text-transparent">
-              Your Smart Guide to Healthy Eating
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Personalized diet plans for diabetes, blood pressure, heart health, and weight management
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button asChild size="lg" className="text-lg px-8">
-                <Link to="/build-plan">
-                  Get My Plan <ChevronRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8">
-                <Link to="/food-library">Explore Foods</Link>
-              </Button>
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center animate-fade-in">
+            <div className="text-center md:text-left">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-hero bg-clip-text text-transparent">
+                Your Smart Guide to Healthy Eating
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8">
+                Personalized diet plans for diabetes, blood pressure, heart health, and weight management
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+                <Button asChild size="lg" className="text-lg px-8">
+                  <Link to="/build-plan">
+                    Get My Plan <ChevronRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="text-lg px-8">
+                  <Link to="/food-library">Explore Foods</Link>
+                </Button>
+              </div>
             </div>
-
+            <div className="relative">
+              <img 
+                src={heroNutrition} 
+                alt="Healthy nutrition with fresh fruits, vegetables, and wholesome foods" 
+                className="rounded-2xl shadow-card w-full h-auto"
+              />
+            </div>
+          </div>
+          
+          <div className="text-center mt-16">
             {/* Stats Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 bg-gradient-card">
                 <p className="text-4xl font-bold text-primary mb-2">50,000+</p>
                 <p className="text-muted-foreground">Users Transformed</p>
