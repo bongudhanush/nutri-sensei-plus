@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { Heart, Apple, Activity, Users, BookOpen, ChevronRight } from "lucide-react";
+import { Heart, Apple, Activity, Users, BookOpen, ChevronRight, Play } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
 import heroNutrition from "@/assets/hero-nutrition.jpg";
@@ -178,6 +178,82 @@ const Index = () => {
               <h3 className="font-semibold mb-2">24/7 Support</h3>
               <p className="text-sm text-muted-foreground">AI chatbot and expert consultations available</p>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Exercise Videos Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Featured Exercise Programs</h2>
+            <p className="text-muted-foreground text-lg">
+              Tailored workouts for your health goals
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Diabetes Exercise */}
+            <Card className="overflow-hidden hover:shadow-card transition-shadow">
+              <div className="aspect-video bg-muted relative group">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/0l_D0g2UF_Q"
+                  title="Diabetes-Friendly Walking Workout"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Diabetes Management</h3>
+                <p className="text-sm text-muted-foreground">10-minute walking workout to help control blood sugar</p>
+              </div>
+            </Card>
+
+            {/* Heart Health Exercise */}
+            <Card className="overflow-hidden hover:shadow-card transition-shadow">
+              <div className="aspect-video bg-muted relative group">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/8Q8E64G88uY"
+                  title="Low Impact Cardio for Heart Health"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Heart Health</h3>
+                <p className="text-sm text-muted-foreground">Low-impact cardio safe for heart patients</p>
+              </div>
+            </Card>
+
+            {/* Weight Loss Exercise */}
+            <Card className="overflow-hidden hover:shadow-card transition-shadow">
+              <div className="aspect-video bg-muted relative group">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/gC_L9qAHVJ8"
+                  title="Fat Burning Home Workout"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-lg mb-2">Weight Loss</h3>
+                <p className="text-sm text-muted-foreground">30-minute fat burning workout for maximum results</p>
+              </div>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button asChild size="lg" className="text-lg px-8">
+              <Link to="/exercises">
+                View All Exercise Programs <ChevronRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
