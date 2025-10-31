@@ -19,6 +19,13 @@ import broccoliImg from "@/assets/food-broccoli.jpg";
 import blueberriesImg from "@/assets/food-blueberries.jpg";
 import quinoaImg from "@/assets/food-quinoa.jpg";
 import oatsImg from "@/assets/food-oats.jpg";
+import kaleImg from "@/assets/food-kale.jpg";
+import eggsImg from "@/assets/food-eggs.jpg";
+import strawberriesImg from "@/assets/food-strawberries.jpg";
+import milkImg from "@/assets/food-milk.jpg";
+import cheeseImg from "@/assets/food-cheese.jpg";
+import chiaSeedsImg from "@/assets/food-chia-seeds.jpg";
+import pumpkinSeedsImg from "@/assets/food-pumpkin-seeds.jpg";
 
 const FoodLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,7 +111,7 @@ const FoodLibrary = () => {
       id: 6,
       name: "Kale",
       category: "Vegetables",
-      image: spinachImg,
+      image: kaleImg,
       calories: 33,
       protein: 2.9,
       carbs: 6,
@@ -143,7 +150,7 @@ const FoodLibrary = () => {
       id: 9,
       name: "Eggs",
       category: "Proteins",
-      image: chickenImg,
+      image: eggsImg,
       calories: 155,
       protein: 13,
       carbs: 1.1,
@@ -195,7 +202,7 @@ const FoodLibrary = () => {
       id: 13,
       name: "Strawberries",
       category: "Fruits",
-      image: appleImg,
+      image: strawberriesImg,
       calories: 32,
       protein: 0.7,
       carbs: 7.7,
@@ -234,7 +241,7 @@ const FoodLibrary = () => {
       id: 16,
       name: "Skim Milk",
       category: "Dairy",
-      image: yogurtImg,
+      image: milkImg,
       calories: 83,
       protein: 8.3,
       carbs: 12.2,
@@ -247,7 +254,7 @@ const FoodLibrary = () => {
       id: 17,
       name: "Cheddar Cheese",
       category: "Dairy",
-      image: yogurtImg,
+      image: cheeseImg,
       calories: 403,
       protein: 25,
       carbs: 1.3,
@@ -286,7 +293,7 @@ const FoodLibrary = () => {
       id: 20,
       name: "Chia Seeds",
       category: "Nuts & Seeds",
-      image: quinoaImg,
+      image: chiaSeedsImg,
       calories: 138,
       protein: 4.7,
       carbs: 12,
@@ -299,7 +306,7 @@ const FoodLibrary = () => {
       id: 21,
       name: "Pumpkin Seeds",
       category: "Nuts & Seeds",
-      image: quinoaImg,
+      image: pumpkinSeedsImg,
       calories: 151,
       protein: 7,
       carbs: 5,

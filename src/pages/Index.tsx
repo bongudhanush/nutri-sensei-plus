@@ -5,7 +5,6 @@ import { Heart, Apple, Activity, Users, BookOpen, ChevronRight } from "lucide-re
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
 import heroNutrition from "@/assets/hero-nutrition.jpg";
-import nutritionBackground from "@/assets/nutrition-background.jpg";
 
 const Index = () => {
   const conditions = [
@@ -40,16 +39,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      <div 
-        className="fixed inset-0 z-0"
-        style={{
-          backgroundImage: `url(${nutritionBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-          opacity: 0.15
-        }}
-      />
       <div 
         className="fixed inset-0 z-0"
         style={{ background: 'var(--gradient-main)' }}
