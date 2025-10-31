@@ -147,7 +147,7 @@ const BuildPlan = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-main)' }}>
       <Navbar />
       <ChatBot />
 

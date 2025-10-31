@@ -111,7 +111,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'var(--gradient-main)' }}>
       <Card className="w-full max-w-md p-8">
         <div className="flex items-center justify-center mb-6">
           <Activity className="w-10 h-10 text-primary mr-3" />

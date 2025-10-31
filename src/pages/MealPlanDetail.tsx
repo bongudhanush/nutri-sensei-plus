@@ -139,7 +139,7 @@ const MealPlanDetail = () => {
 
   if (!plan) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen" style={{ background: 'var(--gradient-main)' }}>
         <Navbar />
         <div className="container mx-auto max-w-4xl pt-24 px-4">
           <p className="text-center text-muted-foreground">Meal plan not found</p>
@@ -149,7 +149,7 @@ const MealPlanDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-main)' }}>
       <Navbar />
       <ChatBot />
 

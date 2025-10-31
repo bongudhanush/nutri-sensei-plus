@@ -13,21 +13,30 @@ const Exercises = () => {
       exercises: [
         {
           id: 1,
-          title: "Walking Exercise for Diabetes",
-          duration: "30 min",
+          title: "10-Minute Diabetes-Friendly Walking Workout",
+          duration: "10 min",
           intensity: "Low",
-          videoId: "aUaInS6HIGo",
-          description: "Gentle walking routine to help manage blood sugar levels",
+          videoId: "0l_D0g2UF_Q",
+          description: "Gentle indoor walking routine specifically designed for diabetics to help manage blood sugar levels",
           benefits: ["Improves insulin sensitivity", "Controls blood glucose", "Promotes cardiovascular health"]
         },
         {
           id: 2,
           title: "Chair Exercises for Diabetics",
-          duration: "20 min",
+          duration: "15 min",
           intensity: "Low",
-          videoId: "xfNxJH_RlyA",
-          description: "Seated exercises perfect for diabetes management",
+          videoId: "2OqXWUB8cz8",
+          description: "Seated exercises perfect for diabetes management, safe and effective",
           benefits: ["Builds muscle mass", "Increases metabolism", "Better glucose control"]
+        },
+        {
+          id: 3,
+          title: "Diabetes Exercise - Full Body Workout",
+          duration: "20 min",
+          intensity: "Medium",
+          videoId: "bKUiIISwFXs",
+          description: "Complete workout routine designed specifically for people with diabetes",
+          benefits: ["Full body conditioning", "Blood sugar regulation", "Improved energy levels"]
         }
       ]
     },
@@ -36,22 +45,55 @@ const Exercises = () => {
       name: "Heart Health",
       exercises: [
         {
-          id: 3,
-          title: "Cardio for Heart Health",
-          duration: "25 min",
-          intensity: "Medium",
-          videoId: "ML6WXLjalVc",
-          description: "Safe cardiovascular exercises for heart patients",
+          id: 4,
+          title: "Low Impact Cardio for Heart Health",
+          duration: "20 min",
+          intensity: "Low",
+          videoId: "8Q8E64G88uY",
+          description: "Gentle cardio workout safe for heart patients and beginners",
           benefits: ["Strengthens heart muscle", "Improves circulation", "Reduces blood pressure"]
         },
         {
-          id: 4,
-          title: "Gentle Yoga for Heart Health",
-          duration: "30 min",
+          id: 5,
+          title: "Cardiac Rehabilitation Exercises",
+          duration: "15 min",
           intensity: "Low",
-          videoId: "COp7BR_Dvps",
-          description: "Relaxing yoga poses to support heart health",
+          videoId: "tPaWe0gPNfk",
+          description: "Rehabilitation exercises designed for heart health improvement",
+          benefits: ["Safe heart strengthening", "Reduces cardiac risk", "Improves recovery"]
+        },
+        {
+          id: 6,
+          title: "Gentle Yoga for Heart Health",
+          duration: "25 min",
+          intensity: "Low",
+          videoId: "qJYGtkZ_xvg",
+          description: "Relaxing yoga poses specifically chosen to support cardiovascular health",
           benefits: ["Reduces stress", "Lowers heart rate", "Improves flexibility"]
+        }
+      ]
+    },
+    {
+      id: "blood-pressure",
+      name: "Blood Pressure",
+      exercises: [
+        {
+          id: 7,
+          title: "Exercises to Lower Blood Pressure",
+          duration: "15 min",
+          intensity: "Low",
+          videoId: "pjKvVHt7Jf8",
+          description: "Specific exercises proven to help reduce high blood pressure naturally",
+          benefits: ["Lowers BP naturally", "Improves circulation", "Reduces hypertension"]
+        },
+        {
+          id: 8,
+          title: "Gentle Seated Exercises for Hypertension",
+          duration: "20 min",
+          intensity: "Low",
+          videoId: "L7oKxuPzAeg",
+          description: "Safe seated exercises perfect for those managing high blood pressure",
+          benefits: ["Safe for hypertension", "Easy to follow", "Stress reduction"]
         }
       ]
     },
@@ -60,46 +102,31 @@ const Exercises = () => {
       name: "Weight Loss",
       exercises: [
         {
-          id: 5,
-          title: "Fat Burning Workout",
-          duration: "35 min",
+          id: 9,
+          title: "30-Minute Fat Burning Home Workout",
+          duration: "30 min",
           intensity: "High",
-          videoId: "hlWiI4xVXKY",
-          description: "High-intensity workout for maximum calorie burn",
+          videoId: "gC_L9qAHVJ8",
+          description: "High-intensity workout for maximum calorie burn and weight loss",
           benefits: ["Burns calories", "Boosts metabolism", "Builds lean muscle"]
         },
         {
-          id: 6,
-          title: "Full Body Workout at Home",
-          duration: "40 min",
-          intensity: "High",
-          videoId: "QlHEJkr3jU4",
-          description: "Complete home workout for weight loss",
-          benefits: ["Total body conditioning", "No equipment needed", "Effective fat loss"]
-        }
-      ]
-    },
-    {
-      id: "general",
-      name: "General Fitness",
-      exercises: [
-        {
-          id: 7,
-          title: "Morning Stretching Routine",
-          duration: "15 min",
-          intensity: "Low",
-          videoId: "g_tea8ZNk5A",
-          description: "Start your day with these energizing stretches",
-          benefits: ["Increases flexibility", "Improves posture", "Boosts energy"]
-        },
-        {
-          id: 8,
-          title: "Beginner Pilates",
+          id: 10,
+          title: "Full Body Weight Loss Workout",
           duration: "25 min",
           intensity: "Medium",
-          videoId: "4pKly2JojMw",
-          description: "Core-strengthening pilates for beginners",
-          benefits: ["Strengthens core", "Improves balance", "Better body awareness"]
+          videoId: "UBMk30rjy0o",
+          description: "Complete home workout designed for effective weight loss",
+          benefits: ["Total body conditioning", "No equipment needed", "Effective fat loss"]
+        },
+        {
+          id: 11,
+          title: "HIIT Workout for Weight Loss",
+          duration: "20 min",
+          intensity: "High",
+          videoId: "ml6cT4AZdqI",
+          description: "High-intensity interval training for rapid weight loss results",
+          benefits: ["Maximum calorie burn", "Time-efficient", "Afterburn effect"]
         }
       ]
     }
@@ -119,7 +146,7 @@ const Exercises = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: 'var(--gradient-main)' }}>
       <Navbar />
       <ChatBot />
 
@@ -135,7 +162,7 @@ const Exercises = () => {
           </div>
 
           <Tabs defaultValue="diabetes" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-4 mb-8">
               {exerciseCategories.map((category) => (
                 <TabsTrigger key={category.id} value={category.id}>
                   {category.name}
