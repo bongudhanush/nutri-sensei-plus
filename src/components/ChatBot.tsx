@@ -17,7 +17,19 @@ const ChatBot = () => {
   const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
   const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+    const trimmedInput = input.trim();
+    
+    // Input validation
+    if (!trimmedInput || isLoading) return;
+    
+    if (trimmedInput.length > 2000) {
+      toast({
+        title: "Message too long",
+        description: "Please limit your message to 2000 characters.",
+        variant: "destructive",
+      });
+      return;
+    }
     
     const userMessage = input.trim();
     const newMessages = [...messages, { role: "user", content: userMessage }];
