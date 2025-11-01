@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
-import { Activity, Clock, Target, Play } from "lucide-react";
+import { Activity, Clock, Target } from "lucide-react";
 
 const Exercises = () => {
   const exerciseCategories = [
@@ -13,30 +13,30 @@ const Exercises = () => {
       exercises: [
         {
           id: 1,
-          title: "Diabetes Exercise - 10 Minute Walking Workout",
+          title: "After Meal Walking Workout (Lower Blood Sugar)",
           duration: "10 min",
           intensity: "Low",
-          videoId: "fuXZhTFsitk",
-          description: "Easy walking workout at home specifically designed for diabetes management",
+          videoId: "4kOFfQlXfDk",
+          description: "Gentle walking routine after meals to help lower blood sugar levels",
           benefits: ["Improves insulin sensitivity", "Controls blood glucose", "Promotes cardiovascular health"]
         },
         {
           id: 2,
+          title: "10 Min After Eating Walking Workout",
+          duration: "10 min",
+          intensity: "Low",
+          videoId: "sxBmITOwQ54",
+          description: "Easy after-meal walking workout aimed at blood sugar control",
+          benefits: ["Supports glucose control", "Boosts mood", "Improves sleep quality"]
+        },
+        {
+          id: 3,
           title: "Chair Yoga for Diabetes",
           duration: "15 min",
           intensity: "Low",
           videoId: "KJJl7QX4xtc",
-          description: "Gentle seated yoga exercises perfect for diabetes management",
+          description: "Gentle seated yoga exercises suitable for diabetes management",
           benefits: ["Builds muscle mass", "Increases metabolism", "Better glucose control"]
-        },
-        {
-          id: 3,
-          title: "Diabetes Exercise - Strength Training",
-          duration: "20 min",
-          intensity: "Medium",
-          videoId: "Hpm9V8Y9w1k",
-          description: "Strength training exercises designed specifically for people with diabetes",
-          benefits: ["Full body conditioning", "Blood sugar regulation", "Improved energy levels"]
         }
       ]
     },
@@ -46,29 +46,29 @@ const Exercises = () => {
       exercises: [
         {
           id: 4,
-          title: "Cardio Exercise for Heart Health",
-          duration: "20 min",
+          title: "Beginner Heart-Healthy Cardio (All Standing)",
+          duration: "30 min",
           intensity: "Low",
-          videoId: "p3s7VEi2cxk",
-          description: "Low impact cardio workout safe for heart patients",
+          videoId: "AHS8f_m_MYo",
+          description: "Low-impact standing cardio session focusing on heart health",
           benefits: ["Strengthens heart muscle", "Improves circulation", "Reduces blood pressure"]
         },
         {
           id: 5,
-          title: "Heart Healthy Walking Workout",
-          duration: "15 min",
+          title: "Heart Healthy Beginner Cardio (Zone 2)",
+          duration: "32 min",
           intensity: "Low",
-          videoId: "Dw8M7eqq7P8",
-          description: "Gentle walking exercises designed for cardiovascular health",
-          benefits: ["Safe heart strengthening", "Reduces cardiac risk", "Improves recovery"]
+          videoId: "zxa9ZAQrjlc",
+          description: "Beginner-friendly Zone 2 cardio to safely improve cardiovascular fitness",
+          benefits: ["Safe heart strengthening", "Reduces cardiac risk", "Improves endurance"]
         },
         {
           id: 6,
-          title: "Yoga for Heart Health",
-          duration: "25 min",
+          title: "Light Cardio for Heart Health",
+          duration: "23 min",
           intensity: "Low",
-          videoId: "sTANio_2E0Q",
-          description: "Calming yoga sequence to support heart health and reduce stress",
+          videoId: "hGYFfYD2oKA",
+          description: "Light to moderate cardio designed to support heart health",
           benefits: ["Reduces stress", "Lowers heart rate", "Improves flexibility"]
         }
       ]
@@ -79,29 +79,29 @@ const Exercises = () => {
       exercises: [
         {
           id: 7,
-          title: "Exercises to Lower Blood Pressure",
-          duration: "15 min",
+          title: "Cardio + Isometrics to Lower Blood Pressure",
+          duration: "27 min",
           intensity: "Low",
-          videoId: "BZbKhP-2sMc",
-          description: "Specific exercises proven to help reduce high blood pressure naturally",
+          videoId: "HD6sGJst-TM",
+          description: "Follow-along routine combining cardio and isometrics to help reduce BP",
           benefits: ["Lowers BP naturally", "Improves circulation", "Reduces hypertension"]
         },
         {
           id: 8,
-          title: "Blood Pressure Management Workout",
-          duration: "20 min",
+          title: "Best Workout for High Blood Pressure",
+          duration: "15 min",
           intensity: "Low",
-          videoId: "6Mvdl8f-aKI",
-          description: "Low intensity workout perfect for managing high blood pressure",
+          videoId: "EsVLl_bEcXw",
+          description: "Low-impact total body workout suitable for high blood pressure",
           benefits: ["Safe for hypertension", "Easy to follow", "Stress reduction"]
         },
         {
           id: 9,
-          title: "Breathing Exercises for High Blood Pressure",
-          duration: "10 min",
+          title: "5-Min Breathing to Lower Blood Pressure",
+          duration: "5 min",
           intensity: "Low",
-          videoId: "tEmt1Znux58",
-          description: "Deep breathing techniques to naturally lower blood pressure",
+          videoId: "jZq_NqJ9rKE",
+          description: "Quick guided breathing session to help lower blood pressure",
           benefits: ["Reduces stress", "Lowers BP immediately", "Improves relaxation"]
         }
       ]
@@ -112,30 +112,30 @@ const Exercises = () => {
       exercises: [
         {
           id: 10,
-          title: "Fat Burning Cardio Workout",
+          title: "30 Min Beginner Low Impact for Weight Loss",
           duration: "30 min",
-          intensity: "High",
-          videoId: "2MfqZghVQss",
-          description: "High-energy cardio workout for maximum calorie burn and weight loss",
+          intensity: "Medium",
+          videoId: "i96SEOqyAjU",
+          description: "Low-impact routine for calorie burn and strength gains",
           benefits: ["Burns calories", "Boosts metabolism", "Builds lean muscle"]
         },
         {
           id: 11,
-          title: "Full Body Weight Loss Workout",
-          duration: "25 min",
+          title: "30 Min Full Body for Total Beginners",
+          duration: "30 min",
           intensity: "Medium",
-          videoId: "ml6cT4AZdqI",
-          description: "Complete no-equipment home workout designed for effective weight loss",
+          videoId: "3rdsdh5fVeY",
+          description: "All-standing, no equipment workout designed for beginners",
           benefits: ["Total body conditioning", "No equipment needed", "Effective fat loss"]
         },
         {
           id: 12,
-          title: "HIIT Workout for Weight Loss",
-          duration: "20 min",
-          intensity: "High",
-          videoId: "gC_L9qAHVJ8",
-          description: "High-intensity interval training for rapid weight loss results",
-          benefits: ["Maximum calorie burn", "Time-efficient", "Afterburn effect"]
+          title: "30 Min Low Impact Home Workout for Weight Loss",
+          duration: "30 min",
+          intensity: "Medium",
+          videoId: "MOz41fYRBvs",
+          description: "Low-impact full-body routine that's joint-friendly yet effective",
+          benefits: ["Maximum calorie burn", "Time-efficient", "Sustainable intensity"]
         }
       ]
     }
@@ -184,27 +184,16 @@ const Exercises = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   {category.exercises.map((exercise) => (
                     <Card key={exercise.id} className="overflow-hidden hover:shadow-card transition-shadow">
-                      <div className="aspect-video relative group">
-                        <a
-                          href={`https://www.youtube.com/watch?v=${exercise.videoId}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full h-full"
-                          aria-label={`Watch ${exercise.title} on YouTube`}
-                        >
-                          <img
-                            src={`https://img.youtube.com/vi/${exercise.videoId}/hqdefault.jpg`}
-                            alt={`${exercise.title} thumbnail`}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg">
-                              <Play className="w-8 h-8" />
-                            </div>
-                          </div>
-                        </a>
+                      <div className="aspect-video bg-muted">
+                        <iframe
+                          className="w-full h-full"
+                          src={`https://www.youtube-nocookie.com/embed/${exercise.videoId}?rel=0&modestbranding=1&playsinline=1`}
+                          title={exercise.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
                       </div>
 
                       <div className="p-6">
