@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
 import ChatBot from "@/components/ChatBot";
-import { Activity, Clock, Target } from "lucide-react";
+import { Activity, Clock, Target, Play } from "lucide-react";
 
 const Exercises = () => {
   const exerciseCategories = [
@@ -184,16 +184,27 @@ const Exercises = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   {category.exercises.map((exercise) => (
                     <Card key={exercise.id} className="overflow-hidden hover:shadow-card transition-shadow">
-                      {/* Video Embed */}
-                      <div className="aspect-video bg-muted">
-                        <iframe
-                          className="w-full h-full"
-                          src={`https://www.youtube.com/embed/${exercise.videoId}`}
-                          title={exercise.title}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        ></iframe>
+                      <div className="aspect-video relative group">
+                        <a
+                          href={`https://www.youtube.com/watch?v=${exercise.videoId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full h-full"
+                          aria-label={`Watch ${exercise.title} on YouTube`}
+                        >
+                          <img
+                            src={`https://img.youtube.com/vi/${exercise.videoId}/hqdefault.jpg`}
+                            alt={`${exercise.title} thumbnail`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg">
+                              <Play className="w-8 h-8" />
+                            </div>
+                          </div>
+                        </a>
                       </div>
 
                       <div className="p-6">
